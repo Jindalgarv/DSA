@@ -1,14 +1,9 @@
-class Solution(object):
-    def removeElement(self, nums, val):
-        """
-        :type nums: List[int]
-        :type val: int
-        :rtype: int
-        """
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
         k=0
         for x in nums:
-            if x != val:
+            if(x!=val):
                 nums[k]=x
                 k+=1
         return k
-        
+                
