@@ -30,8 +30,6 @@ class Solution:
     def validPalindrome(self, s: str) -> bool:
         n=len(s)
         l,r=0,n-1
-        if self.isPalindrome(s,0,n-1):
-            return True
         while(l<r and s[l]==s[r]):
                 l+=1
                 r-=1
@@ -47,11 +45,4 @@ class Solution:
             l+=1
             r-=1
         return True
-
-        
-
-
-
-        
-        
         
