@@ -1,10 +1,11 @@
 class Solution {
 public:
     string mergeAlternately(string word1, string word2) {
-        string s="";
         int n1= word1.size();
         int n2= word2.size();
         int n= min(n1,n2);
+        string s="";
+        s.reserve(n1+n2);
         int k=0;
         for(int i=0;i<n;i++)
         {
