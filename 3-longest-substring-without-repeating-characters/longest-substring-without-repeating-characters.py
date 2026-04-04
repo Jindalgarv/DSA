@@ -9,12 +9,8 @@ class Solution:
                 r+=1
                 longest=max(longest,len(sub))
             else:
-                while(s[r] in sub):
                     sub.remove(s[l])
                     l+=1
-                sub.add(s[r])
-                r+=1
-                longest=max(longest,len(sub))
         return longest
             
             
