@@ -6,9 +6,7 @@ class Solution:
             currSum,subArray=0,1
             for x in nums:
                 currSum+=x
-                if currSum<=mid:
-                    continue
-                else:
+                if currSum>mid:
                     currSum=x
                     subArray+=1
             if subArray >k:
