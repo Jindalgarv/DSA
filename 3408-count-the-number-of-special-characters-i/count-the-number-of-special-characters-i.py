@@ -1,8 +1,10 @@
 class Solution:
     def numberOfSpecialChars(self, word: str) -> int:
-        s=0
-        for x in set(word):
-            if chr(ord(x)+32) in set(word):
-                s+=1
-        return s
+        lower,upper=set(),set()
+        for x in word:
+            if x.islower():
+                lower.add(x)
+            else:
+                upper.add(x.lower())
+        return(len(lower & upper))
         
