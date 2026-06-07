@@ -10,7 +10,7 @@ class Solution:
         head1,head2=l1,l2
         a=0
 
-        while head1 and head2:
+        while head1 or head2:
             head.next=ListNode((head1.val+head2.val+a)%10)
             a=(head1.val+head2.val+a)//10
             head=head.next
