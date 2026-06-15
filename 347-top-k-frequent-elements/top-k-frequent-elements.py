@@ -8,15 +8,29 @@ class Solution:
         # return [key for key,value in sorted_map[0:k]]
 
         #SOLUTION 2 USING HEAP
-        freq=Counter(nums)
-        heap=[]
-        for key, value in freq.items():
-            heappush(heap,(value,key))
-            if len(heap)>k:
-                heappop(heap)
+        # freq=Counter(nums)
+        # heap=[]
+        # for key, value in freq.items():
+        #     heappush(heap,(value,key))
+        #     if len(heap)>k:
+        #         heappop(heap)
+        # res=[]
+        # for value,key in heap:
+        #     res.append(key)
+        # return res
+
+#SOLUTION 3 USING BUCKET SORT
+        freq = Counter(nums)
+        bucket=[[] for _ in range(len(nums)+1)]
+        for key,value in freq.items():
+            bucket[value].append(key)
         res=[]
-        for value,key in heap:
-            res.append(key)
-        return res
+        for i in range(len(bucket)-1,-1,-1):
+            while bucket[i]:
+                res.append(bucket[i].pop())
+                if len(res)==k:
+                    return res
+
+
         
         
