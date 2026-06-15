@@ -26,8 +26,8 @@ class Solution:
             bucket[value].append(key)
         res=[]
         for i in range(len(bucket)-1,-1,-1):
-            while bucket[i]:
-                res.append(bucket[i].pop())
+            for num in bucket[i]:
+                res.append(num)
                 if len(res)==k:
                     return res
 
