@@ -11,7 +11,7 @@ class Solution:
                 root=root.left
             elif root.val <val:
                 root=root.right
-            elif root.val==val:
+            else:
                 return root
         return
         
