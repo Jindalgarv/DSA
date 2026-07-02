@@ -16,7 +16,7 @@ class Solution:
 
         for i in range(m):
             for j in range(n):
-                if (i==0 or i==m-1 or j==0 or j==n-1) and board[i][j]=='O':
+                if (i==0 or i==m-1 or j==0 or j==n-1) and board[i][j]=='O' and not safe[i][j]:
                     dfs(i,j)
         for i in range(m):
             for j in range(n):
