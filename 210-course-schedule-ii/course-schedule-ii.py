@@ -1,27 +1,31 @@
-class Solution:
     #just check topological sort and return it 
-    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
-        q=deque()
-        indegree=[0]*numCourses
-        graph=[[] for _ in range(numCourses)]
-        output=[]
+    #use kahn's algorithm
+class Solution:
+    def findOrder(
+        self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        queue = deque()
+        indegree = [0] * numCourses
+        graph = [[] for _ in range(numCourses)]
+        order = []
 
-        for u,v in prerequisites:
-            graph[v].append(u)
+        # To take course u, course v must be completed first:
+        # v -> u
+        for course, prerequisite in prerequisites:
+            graph[prerequisite].append(course)
+            indegree[course] += 1
 
-        for u,v in prerequisites:
-            indegree[u]+=1
-        for i,x in enumerate(indegree):
-            if not x:
-                q.append(i)
-        while q:
-            node=q[0]
-            output.append(q.popleft())
-            for x in graph[node]:
-                indegree[x]-=1
-                if indegree[x]==0:
-                    q.append(x)
-        if len(output)==numCourses:
-            return output
-        return []
-                
+        for course in range(numCourses):
+            if indegree[course] == 0:
+                queue.append(course)
+
+        while queue:
+            node = queue.popleft()
+            order.append(node)
+
+            for neighbour in graph[node]:
+                indegree[neighbour] -= 1
+
+                if indegree[neighbour] == 0:
+                    queue.append(neighbour)
+
+        return order if len(order) == numCourses else []
