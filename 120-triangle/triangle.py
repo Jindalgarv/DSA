@@ -24,16 +24,31 @@ class Solution:
         # return min(solve(n - 1, j) for j in range(n))
 
 #TABULATION METHOD
-        n = len(triangle)
-        dp = [[0]*(i+1) for i in range(n)]
-        for i in range(n):
+        # n = len(triangle)
+        # dp = [[0]*(i+1) for i in range(n)]
+        # for i in range(n):
+        #     for j in range(i+1):
+        #         if i==0 and j==0:
+        #             dp[i][j]=triangle[0][0]
+        #         elif j==0:
+        #             dp[i][j]=dp[i-1][j]+triangle[i][j]
+        #         elif j==i:
+        #             dp[i][j]=dp[i-1][j-1]+triangle[i][j]
+        #         else:
+        #             dp[i][j]=min(dp[i-1][j],dp[i-1][j-1])+triangle[i][j]
+        # return min(dp[n-1])
+#TABULATION WITH SPACE OPTIMISATION
+
+        n=len(triangle)
+        prev=[triangle[0][0]]
+        for i in range(1,n):
+            curr=[0]*(i+1)
             for j in range(i+1):
-                if i==0 and j==0:
-                    dp[i][j]=triangle[0][0]
-                elif j==0:
-                    dp[i][j]=dp[i-1][j]+triangle[i][j]
+                if j==0:
+                    curr[j]=prev[j]+triangle[i][j]
                 elif j==i:
-                    dp[i][j]=dp[i-1][j-1]+triangle[i][j]
+                    curr[j]=prev[j-1]+triangle[i][j]
                 else:
-                    dp[i][j]=min(dp[i-1][j],dp[i-1][j-1])+triangle[i][j]
-        return min(dp[n-1])
+                    curr[j]=min(prev[j-1],prev[j])+triangle[i][j]
+            prev=curr
+        return min(prev)
