@@ -30,3 +30,20 @@ class Solution:
 #                 dp[i][j]=min(dp[i-1][j],dp[i][j-1])+grid[i][j]
 
 #         return dp[m-1][n-1]
+
+
+#TABULATION WITH SPACE OPTIMIZATION
+
+        m,n=len(grid),len(grid[0])
+        prev=[float('inf')]*n
+        for i in range(1,m):
+            curr=[float('inf')]*n
+            curr[0]=grid[i][0]
+            for j in range(1,n):
+                curr[i][j]=min(curr[j-1],prev[j])+grid[i][j]
+            prev=curr
+        return curr[m-1][n-1]
+        
+
+
+
