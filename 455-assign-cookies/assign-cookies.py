@@ -11,12 +11,6 @@ class Solution:
             
 
 
-
-
-
-
-
-
         # if not g or not s:
         #     return 0
         # g.sort()
