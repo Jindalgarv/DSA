@@ -1,9 +1,10 @@
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         n=len(nums)
-        if sum(nums)%2:
+        total = sum(nums)
+        if total % 2:
             return False
-        target=sum(nums)//2
+        target = total // 2
 
         prev=[False]*(target+1)
         prev[0]=True
