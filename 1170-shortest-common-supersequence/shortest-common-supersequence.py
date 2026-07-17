@@ -9,26 +9,26 @@ class Solution:
                 else:
                     dp[i][j]=max(dp[i-1][j],dp[i][j-1])
         i,j=n1,n2
-        string=""
+        arr=[]
         while i>0 and j>0:
             if str1[i-1]==str2[j-1]:
-                string+=str1[i-1]
+                arr.append(str1[i-1])
                 i,j=i-1,j-1
             else:
                 if dp[i][j-1]>dp[i-1][j]:
-                    string+=str2[j-1]
+                    arr.append(str2[j-1])
                     j=j-1
                 else:
-                    string+=str1[i-1]
+                    arr.append(str1[i-1])
                     i=i-1
         while i > 0:
-            string += str1[i-1]
+            arr.append(str1[i-1])
             i -= 1
 
         while j > 0:
-            string += str2[j-1]
+            arr.append(str2[j-1])
             j -= 1
-        return string[::-1]
+        return "".join(reversed(arr))
             
 
 
