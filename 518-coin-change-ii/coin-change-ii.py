@@ -3,7 +3,7 @@ class Solution:
         n=len(coins)
         dp=[[-1]*(amount+1) for _ in range(n)]
         def solve(i,target):
-            if amount==0:
+            if target==0:
                 return 1
             if i==0:
                 if not target%coins[i]:
@@ -18,4 +18,3 @@ class Solution:
             dp[i][target]=taken+not_taken
             return dp[i][target]
         return solve(n-1,amount)
-
