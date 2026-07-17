@@ -3,8 +3,6 @@ class Solution:
         n=len(coins)
         dp=[[-1]*(amount+1) for _ in range(n)]
         def solve(i,target):
-            if target==0:
-                return 1
             if i==0:
                 if not target%coins[i]:
                     return 1
