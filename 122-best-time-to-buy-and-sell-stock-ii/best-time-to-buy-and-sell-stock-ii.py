@@ -39,17 +39,25 @@
 #         return dp[0][1]
                 
 #SPACE OPTIMISED TABULATION
-
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        n=len(prices)
-        
-        prev=[0]*2
-        for i in range(n-1,-1,-1):
-            curr=[0]*2
-            curr[1]=max(-prices[i]+prev[0],prev[1])
-            curr[0]=max(prices[i]+prev[1],prev[0])
-            prev=curr
-        return prev[1]
+        ahead = [0, 0]  # Represents dp[i+1]
+
+        for i in range(len(prices) - 1, -1, -1):
+            curr = [0, 0]
+
+            curr[1] = max(
+                -prices[i] + ahead[0],
+                ahead[1]
+            )
+
+            curr[0] = max(
+                prices[i] + ahead[1],
+                ahead[0]
+            )
+
+            ahead = curr
+
+        return ahead[1]
                 
 
