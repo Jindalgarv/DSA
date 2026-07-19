@@ -16,10 +16,21 @@ class Solution:
         # return solve(0,-1)
 
 #TABULATION CODE
-        n=len(nums)
-        dp=[0]*n
-        for i in range(n):
-            for j in range(i):
-                if nums[j]<nums[i]:
-                    dp[i]=max(dp[i],dp[j]+1)
-        return 1+max(dp)
+        # n=len(nums)
+        # dp=[1]*n
+        # for i in range(n):
+        #     for j in range(i):
+        #         if nums[j]<nums[i]:
+        #             dp[i]=max(dp[i],dp[j]+1)
+        # return max(dp)
+
+#BINARY SEARCH CODE
+        arr=[]
+        for num in nums:
+            idx=bisect_left(arr,num)
+            if idx==len(arr):
+                arr.append(num)
+            else:
+                arr[idx]=num
+        return len(arr)
+
