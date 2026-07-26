@@ -16,7 +16,7 @@
         #     for j in range(n):
         #         matrix[row][j]=0
 
-#OPTIMAL with space O(m+n)
+#Better with space O(m+n)
 class Solution:
     def setZeroes(self, matrix: List[List[int]]) -> None:
         m,n=len(matrix),len(matrix[0])
@@ -29,13 +29,29 @@ class Solution:
                     column[j]=1
 
         for i in range(m):
-            if row[i]:
-                for j in range(n):
+            for j in range(n):
+                if row[i] or column[j]:
                     matrix[i][j]=0
-        for j in range(n):
-            if column[j]:
-                for i in range(m):
-                    matrix[i][j]=0
+
+#OPTIMAL WITH CONSTANT SPACE
+#1,2,3
+#2,0,0
+#0,3,0
+
+# class Solution:
+#     def setZeroes(self, matrix: List[List[int]]) -> None:
+#         m,n=len(matrix),len(matrix[0])
+#         for i in range(m):
+#             for j in range(n):
+#                 if not matrix[i][j]:
+#                     matrix[i][0]=0
+#                     matrix[0][j]=0
+
+        # for i in range(m):
+        #     for j in range(n):
+        #         if row[i] or column[j]:
+        #             matrix[i][j]=0
+
         
 
 
