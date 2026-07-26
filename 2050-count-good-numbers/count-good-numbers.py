@@ -8,12 +8,10 @@ class Solution:
 
             x = (x * x) % mod
             n //= 2
-
         return ans
 
     def countGoodNumbers(self, n: int) -> int:
         mod = 10**9 + 7
-
         even = (n + 1) // 2
         odd = n // 2
 
