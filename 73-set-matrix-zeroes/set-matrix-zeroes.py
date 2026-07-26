@@ -17,40 +17,50 @@
         #         matrix[row][j]=0
 
 #Better with space O(m+n)
-class Solution:
-    def setZeroes(self, matrix: List[List[int]]) -> None:
-        m,n=len(matrix),len(matrix[0])
-        row=[0]*m
-        column=[0]*n
-        for i in range(m):
-            for j in range(n):
-                if not matrix[i][j]:
-                    row[i]=1
-                    column[j]=1
+# class Solution:
+    # def setZeroes(self, matrix: List[List[int]]) -> None:
+    #     m,n=len(matrix),len(matrix[0])
+    #     row=[0]*m
+    #     column=[0]*n
+    #     for i in range(m):
+    #         for j in range(n):
+    #             if not matrix[i][j]:
+    #                 row[i]=1
+    #                 column[j]=1
 
-        for i in range(m):
-            for j in range(n):
-                if row[i] or column[j]:
-                    matrix[i][j]=0
+    #     for i in range(m):
+    #         for j in range(n):
+    #             if row[i] or column[j]:
+    #                 matrix[i][j]=0
 
 #OPTIMAL WITH CONSTANT SPACE
 #1,2,3
 #2,0,0
 #0,3,0
 
-# class Solution:
-#     def setZeroes(self, matrix: List[List[int]]) -> None:
-#         m,n=len(matrix),len(matrix[0])
-#         for i in range(m):
-#             for j in range(n):
-#                 if not matrix[i][j]:
-#                     matrix[i][0]=0
-#                     matrix[0][j]=0
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        m,n=len(matrix),len(matrix[0])
+        first_col=1
+        for i in range(m):
+            for j in range(n):
+                if j==0 and matrix[i][j]==0:
+                    first_col=0
+                elif matrix[i][j]==0:
+                    matrix[0][j]=0
+                    matrix[i][0]=0
+        for i in range(1,m):
+            for j in range(1,n):
+                if (matrix[i][0]==0 or matrix[0][j]==0) and matrix[i][j]:
+                    matrix[i][j]=0
 
-        # for i in range(m):
-        #     for j in range(n):
-        #         if row[i] or column[j]:
-        #             matrix[i][j]=0
+        if matrix[0][0]==0:
+            for j in range(n):
+                matrix[0][j]=0
+        if first_col==0:
+            for i in range(m):
+                matrix[i][0]=0
+
 
         
 
