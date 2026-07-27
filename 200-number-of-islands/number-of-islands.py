@@ -1,5 +1,6 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
+        #IF WANT TO OPTIMIZE THE SPACE WE CAN JUST MODIFY THE GRID
         m, n = len(grid), len(grid[0])
         visited = [[False] * n for _ in range(m)]
         directions = [(-1,0), (1,0), (0,-1), (0,1)]
