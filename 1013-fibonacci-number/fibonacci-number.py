@@ -7,7 +7,7 @@ class Solution:
                 return dp[n]
             if n==0 or n==1:
                 return n
-            dp[n]=self.fib(n-1)+self.fib(n-2)
+            dp[n]=f(n-1)+f(n-2)
             return dp[n]
         return f(n)
 
