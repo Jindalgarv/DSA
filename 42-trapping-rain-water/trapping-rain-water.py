@@ -14,19 +14,37 @@ class Solution:
         # return water
 
 #SPACE OPTIMISED
-        n=len(height)
-        left_max,right_max=0,0
-        l,r=0,n-1
-        water=0
-        while l<r:
-            left_max=max(left_max,height[l])
-            right_max=max(right_max,height[r])
-            if height[l]<=height[r]:
-                l+=1
-                if height[l]<min(left_max,right_max):
-                    water+=min(left_max,right_max)-height[l]
+        # n=len(height)
+        # left_max,right_max=0,0
+        # l,r=0,n-1
+        # water=0
+        # while l<r:
+        #     left_max=max(left_max,height[l])
+        #     right_max=max(right_max,height[r])
+        #     if height[l]<=height[r]:
+        #         l+=1
+        #         if height[l]<min(left_max,right_max):
+        #             water+=min(left_max,right_max)-height[l]
+        #     else:
+        #         r-=1
+        #         if height[r]<min(left_max,right_max):
+        #             water+=min(left_max,right_max)-height[r]
+        # return water
+#GPT VERSION OF SPACE OPTIMISED JUST SMALL IMPROVEMENT IN MY CODE
+
+        l, r = 0, len(height) - 1
+        left_max = right_max = 0
+        water = 0
+
+        while l < r:
+            left_max = max(left_max, height[l])
+            right_max = max(right_max, height[r])
+
+            if left_max <= right_max:
+                water += left_max - height[l]
+                l += 1
             else:
-                r-=1
-                if height[r]<min(left_max,right_max):
-                    water+=min(left_max,right_max)-height[r]
+                water+= right_max - height[r]
+                r -= 1
+
         return water
