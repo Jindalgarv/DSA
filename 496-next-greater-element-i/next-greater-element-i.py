@@ -17,22 +17,23 @@ class Solution:
 
 # O(N) using monotonic stack
         n1,n2=len(nums1),len(nums2)
-        nge=[-1]*n2
+        nge={}
         stack=[]
-        res=[]
+        res=[0]*n1
         for i in range(n2-1,-1,-1):
             if not stack:
                 stack.append(nums2[i])
+                nge[nums2[i]]=-1
                 continue
             while stack and stack[-1]<=nums2[i]:
                 stack.pop()
             if stack:
-                nge[i]=stack[-1]
+                nge[nums2[i]]=stack[-1]
+            else:
+                nge[nums2[i]]=-1
             stack.append(nums2[i])
-        for x in nums1:
-            for i in range(n2):
-                if nums2[i]==x:
-                    res.append(nge[i])
-                    break
+        for i,num in enumerate(nums1):
+            res[i] = nge[num]
+
         return res
 
