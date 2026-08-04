@@ -16,24 +16,19 @@ class Solution:
         # return res
 
 # O(N) using monotonic stack
+        stack = []
+        nge = {}
         n1,n2=len(nums1),len(nums2)
-        nge={}
-        stack=[]
-        res=[0]*n1
-        for i in range(n2-1,-1,-1):
-            if not stack:
-                stack.append(nums2[i])
-                nge[nums2[i]]=-1
-                continue
-            while stack and stack[-1]<=nums2[i]:
+        for i in range(n2 - 1, -1, -1):
+
+            while stack and stack[-1] <= nums2[i]:
                 stack.pop()
+
             if stack:
-                nge[nums2[i]]=stack[-1]
+                nge[nums2[i]] = stack[-1]
             else:
-                nge[nums2[i]]=-1
+                nge[nums2[i]] = -1
+
             stack.append(nums2[i])
-        for i,num in enumerate(nums1):
-            res[i] = nge[num]
 
-        return res
-
+        return [nge[x] for x in nums1]
