@@ -1,20 +1,15 @@
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
-        d={}
-        d2={}
-        for a,b in zip(s,t):
-            if a in d and d[a]==b:
-                continue
-            elif a not in d:
-                d[a]=b
-            else:
+        s_to_t = {}
+        t_to_s = {}
+
+        for ch_s, ch_t in zip(s, t):
+            if ch_s in s_to_t and s_to_t[ch_s] != ch_t:
                 return False
-        for b,a in zip(s,t):
-            if a in d2 and d2[a]==b:
-                continue
-            elif a not in d2:
-                d2[a]=b
-            else:
+            if ch_t in t_to_s and t_to_s[ch_t] != ch_s:
                 return False
+
+            s_to_t[ch_s] = ch_t
+            t_to_s[ch_t] = ch_s
+
         return True
-        
