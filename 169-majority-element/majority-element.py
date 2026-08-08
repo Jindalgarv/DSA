@@ -1,14 +1,8 @@
-class Solution(object):
-    def majorityElement(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        n=len(nums)
-        nums.sort()
-        if n%2==0:
-            return nums[n//2]
-        else:
-            k=n//2
-            return nums[k]
-        
+from collections import Counter
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        freq=Counter(nums)
+        ans=0
+        for e,f in freq.items():
+            if f>len(nums)//2:
+                return e
