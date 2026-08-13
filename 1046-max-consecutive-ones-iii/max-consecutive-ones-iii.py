@@ -7,7 +7,7 @@ class Solution:
             if nums[r]:
                 r+=1
                 ans=max(ans,r-l)
-            elif not nums[r] and k>0:
+            elif k>0:
                 r+=1
                 k-=1
                 ans=max(ans,r-l)
