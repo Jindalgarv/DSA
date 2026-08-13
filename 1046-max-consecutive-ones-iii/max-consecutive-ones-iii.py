@@ -6,17 +6,15 @@ class Solution:
         while r<n:
             if nums[r]:
                 r+=1
-                ans=max(ans,r-l)
             elif k>0:
                 r+=1
                 k-=1
-                ans=max(ans,r-l)
             elif k==0:
                 while nums[l] and l<=r:
                     l+=1
                 k+=1
                 l+=1
-            
+            ans=max(ans,r-l)
         return ans
 
 
