@@ -1,10 +1,8 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        if not s:
-            return 0
         n=len(s)
         l,r=0,0
-        ans=1
+        ans=0
         contains=set()
 
         while r<n:
