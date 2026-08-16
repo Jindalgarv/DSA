@@ -1,0 +1,13 @@
+class Solution:
+    def minOperations(self, n: int) -> int:
+        ans=0
+        while n:
+            if n&1:
+                if n&2:
+                    n+=1
+                else:
+                    n-=1
+                ans+=1
+            else:
+                n>>=1
+        return ans
