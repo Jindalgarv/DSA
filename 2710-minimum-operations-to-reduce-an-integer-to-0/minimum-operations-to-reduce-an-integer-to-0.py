@@ -8,6 +8,5 @@ class Solution:
                 else:
                     n-=1
                 ans+=1
-            else:
-                n>>=1
+            n=n>>1
         return ans
