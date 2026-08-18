@@ -14,7 +14,7 @@ class Solution:
             else:
                 right=j
                 break
-        if right<=left:
+        if left==n-1 or right==0:
             return 0
         result=min(n-left-1,right)
         i,j=0,right
