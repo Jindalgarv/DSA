@@ -1,15 +1,14 @@
 class Solution:
     def countCommas(self, n: int) -> int:
-        if n<1000:
-            return 0
-        elif 1000<=n<1000000:
-            return n-1000+1
-        elif 1000000<=n<1000000000:
-            return (n-1000000+1)*2+999000
-        elif 1000000000<=n<1000000000000:
-            return (n-1000000000+1)*3+2*(999000000)+999000
-        elif 1000000000000<=n<1000000000000000:
-            return (n-1000000000000+1)*4+3*(999000000000)+2*(999000000)+999000
-        else:
-            return (n-1000000000000000+1)*5 +(999000000000000)*4+3*(999000000000)+2*(999000000)+999000
-        
+        ans = 0
+        start = 1000
+        commas = 1
+
+        while start <= n:
+            end = min(n, start * 1000 - 1)
+            ans += (end - start + 1) * commas
+
+            start *= 1000
+            commas += 1
+
+        return ans
