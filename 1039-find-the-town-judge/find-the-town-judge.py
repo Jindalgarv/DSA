@@ -1,18 +1,12 @@
 class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:
-        s=set()
+        indegree,outdegree=[0]*n,[0]*n
         for a,b in trust:
-            s.add(a)
-        if len(s)!=n-1:
-            return -1
-        for i in range(1,n+1):
-            if i not in s:
-                t=i
-                break
-
-        for i in range(1,n):
-            if i !=t and [i,t] not in trust:
-                return -1
-        return t
+            indegree[b-1]+=1
+            outdegree[a-1]+=1
+        for i, deg in enumerate(outdegree):
+            if deg==0 and indegree[i]==n-1:
+                return i+1
+        return -1
 
             
